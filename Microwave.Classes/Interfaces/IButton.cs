@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Microwave.Classes.Interfaces
 {
-    public interface IButton
+    public interface IButton //can't spell button without butt
     {
         event EventHandler Pressed;
 
