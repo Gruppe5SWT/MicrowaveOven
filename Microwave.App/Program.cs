@@ -31,7 +31,7 @@ namespace Microwave.App
             // Finish the double association
             cooker.UI = ui;
 
-            // Simulate a simple sequence
+            // Simulate a simple sequence --
 
             powerButton.Press();
 
