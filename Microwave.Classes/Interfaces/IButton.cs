@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Microwave.Classes.Interfaces
 {
-    public interface IButton //ost
+    public interface IButton 
     {
         event EventHandler Pressed;
 

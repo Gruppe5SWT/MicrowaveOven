@@ -6,7 +6,7 @@ namespace Microwave.App
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main(string[] args) //comment hello
         {
             Button startCancelButton = new Button();
             Button powerButton = new Button();
