@@ -18,7 +18,9 @@ namespace Microwave.App
 
             Display display = new Display(output);
 
-            PowerTube powerTube = new PowerTube(output);
+            int maxPower = 100;
+
+            PowerTube powerTube = new PowerTube(output, maxPower);
 
             Light light = new Light(output);
 
@@ -34,6 +36,9 @@ namespace Microwave.App
             // Simulate a simple sequence --
 
             powerButton.Press();
+            powerButton.Press();
+            powerButton.Press();
+
 
             timeButton.Press();
 
