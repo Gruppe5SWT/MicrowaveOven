@@ -2,6 +2,6 @@
 {
     public interface IBuzzer
     {
-        void MakeSound();
+        void MakeSound(int times);
     }
 }
