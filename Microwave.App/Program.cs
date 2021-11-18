@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using Microwave.Classes.Boundary;
 using Microwave.Classes.Controllers;
 
@@ -40,11 +41,26 @@ namespace Microwave.App
             timeButton.Press();
 
             startCancelButton.Press();
+            
+            System.Console.WriteLine("When you press enter, the program will stop");
+            // Wait for input
 
             // The simple sequence should now run
 
-            System.Console.WriteLine("When you press enter, the program will stop");
-            // Wait for input
+            /*
+             *  Demonstrating Feature 3: Add or remove time during cooking
+             *  Works in 20 second intervals.             * 
+             */
+            Console.WriteLine("-------");
+            Console.WriteLine("Feature 3: Adding and removing time during cooking");
+            Console.WriteLine("Pressing AddtimeButton twice to add 20 seconds");
+            AddTimeButton.Press();
+            AddTimeButton.Press();
+            Thread.Sleep(3000); //sleep a bit to see the change
+            Console.WriteLine("Pressing SubtractTimeButton once to remove 20 seconds");
+            subtractTimeButton.Press();
+
+
            
 
 

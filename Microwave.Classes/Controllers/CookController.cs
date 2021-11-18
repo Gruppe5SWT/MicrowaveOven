@@ -39,7 +39,7 @@ namespace Microwave.Classes.Controllers
 
             timer.Expired += new EventHandler(OnTimerExpired);
             timer.TimerTick += new EventHandler(OnTimerTick);
-
+             
             
         }
 
