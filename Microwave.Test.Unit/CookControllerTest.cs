@@ -93,7 +93,23 @@ namespace Microwave.Test.Unit
             timer.Expired += Raise.EventWith(this, EventArgs.Empty);
 
             buzzer.Received().MakeSound(3);
+
+        }
+        [Test]
+        public void AddTime_myTimerAddTime()
+        {
+            uut.AddTime();
+
+            timer.Received(1).AddTime();
+        }
+
+        [Test]
+        public void SubtractTime_myTimerSubtractTime()
+        {
+            uut.SubtractTime();
+
+            timer.Received(1).SubtractTime();
         }
 
     }
-}
+ }
