@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using Microwave.Classes.Boundary;
 using Microwave.Classes.Controllers;
 
@@ -11,6 +12,8 @@ namespace Microwave.App
             Button startCancelButton = new Button();
             Button powerButton = new Button();
             Button timeButton = new Button();
+            Button AddTimeButton = new Button();
+            Button subtractTimeButton = new Button();
 
             Door door = new Door();
 
@@ -24,11 +27,13 @@ namespace Microwave.App
 
             Light light = new Light(output);
 
-            Microwave.Classes.Boundary.Timer timer = new Timer();
+            Microwave.Classes.Boundary.Timer timer = new Microwave.Classes.Boundary.Timer();
+            Buzzer buzzer = new Buzzer(output);
 
-            CookController cooker = new CookController(timer, display, powerTube);
 
-            UserInterface ui = new UserInterface(powerButton, timeButton, startCancelButton, door, display, light, cooker);
+            CookController cooker = new CookController(timer, display, powerTube, buzzer);
+
+            UserInterface ui = new UserInterface(powerButton, timeButton, startCancelButton, AddTimeButton, subtractTimeButton, door, display, light, cooker);
 
             // Finish the double association
             cooker.UI = ui;
@@ -40,6 +45,9 @@ namespace Microwave.App
             timeButton.Press();
 
             startCancelButton.Press();
+            
+            System.Console.WriteLine("When you press enter, the program will stop");
+            // Wait for input
 
             // The simple sequence should now run
 
@@ -67,6 +75,21 @@ namespace Microwave.App
 
             System.Console.WriteLine("When you press enter, the program will stop");
             // Wait for input
+            /*
+             *  Demonstrating Feature 3: Add or remove time during cooking
+             *  Works in 20 second intervals.             * 
+             */
+            Console.WriteLine("-------");
+            Console.WriteLine("Feature 3: Adding and removing time during cooking");
+            Console.WriteLine("Pressing AddtimeButton twice to add 20 seconds");
+            AddTimeButton.Press();
+            AddTimeButton.Press();
+            Thread.Sleep(3000); //sleep a bit to see the change
+            Console.WriteLine("Pressing SubtractTimeButton once to remove 20 seconds");
+            subtractTimeButton.Press();
+
+
+
 
             System.Console.ReadLine();
         }

@@ -15,6 +15,7 @@ namespace Microwave.Test.Unit
         private ITimer timer;
         private IDisplay display;
         private IPowerTube powerTube;
+        private IBuzzer buzzer;
 
         [SetUp]
         public void Setup()
@@ -23,8 +24,9 @@ namespace Microwave.Test.Unit
             timer = Substitute.For<ITimer>();
             display = Substitute.For<IDisplay>();
             powerTube = Substitute.For<IPowerTube>();
+            buzzer = Substitute.For<IBuzzer>();
 
-            uut = new CookController(timer, display, powerTube, ui);
+            uut = new CookController(timer, display, powerTube, buzzer, ui);
         }
 
         [Test]
@@ -92,7 +94,31 @@ namespace Microwave.Test.Unit
             powerTube.MaximumPower.Returns(tubePower);
             var res = uut.GetPowerTubeMaxPower();
             Assert.That(res.Equals(tubePower));
+        [Test]
+        public void Cooking_TimerExpired_BuzzerCalled()
+        {
+            uut.StartCooking(50, 60);
+
+            timer.Expired += Raise.EventWith(this, EventArgs.Empty);
+
+            buzzer.Received().MakeSound(3);
+
+        }
+        [Test]
+        public void AddTime_myTimerAddTime()
+        {
+            uut.AddTime();
+
+            timer.Received(1).AddTime();
+        }
+
+        [Test]
+        public void SubtractTime_myTimerSubtractTime()
+        {
+            uut.SubtractTime();
+
+            timer.Received(1).SubtractTime();
         }
 
     }
-}
+ }

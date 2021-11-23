@@ -10,6 +10,7 @@ namespace Microwave.Classes.Boundary
         public event EventHandler Expired;
         public event EventHandler TimerTick;
 
+
         private System.Timers.Timer timer;
 
         public Timer()
@@ -19,6 +20,7 @@ namespace Microwave.Classes.Boundary
             timer.Elapsed += OnTimerEvent;
             timer.Interval = 1000; // 1 second intervals
             timer.AutoReset = true;  // Repeatable timer
+
         }
 
 
@@ -31,6 +33,18 @@ namespace Microwave.Classes.Boundary
         public void Stop()
         {
             timer.Enabled = false;
+        }
+
+        public void AddTime()
+        {
+            TimeRemaining += 20;
+        }
+
+        public void SubtractTime()
+        {
+            TimeRemaining -= 20;
+            if (TimeRemaining <= 0)
+                Expire();
         }
 
         private void Expire()

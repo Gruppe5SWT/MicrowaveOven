@@ -11,5 +11,10 @@ namespace Microwave.Classes.Interfaces
         public int GetPowerTubeMaxPower();
         void StartCooking(int power, int time);
         void Stop();
+
+        void AddTime();
+        
+        void SubtractTime();
+        
     }
 }

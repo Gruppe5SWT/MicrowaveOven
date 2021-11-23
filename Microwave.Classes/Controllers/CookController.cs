@@ -14,12 +14,14 @@ namespace Microwave.Classes.Controllers
         private IDisplay myDisplay;
         private IPowerTube myPowerTube;
         private ITimer myTimer;
+        private IBuzzer myBuzzer;
 
         public CookController(
             ITimer timer,
             IDisplay display,
             IPowerTube powerTube,
-            IUserInterface ui) : this(timer, display, powerTube)
+            IBuzzer buzzer,
+            IUserInterface ui) : this(timer, display, powerTube, buzzer)
         {
             UI = ui;
         }
@@ -27,14 +29,18 @@ namespace Microwave.Classes.Controllers
         public CookController(
             ITimer timer,
             IDisplay display,
-            IPowerTube powerTube)
+            IPowerTube powerTube,
+            IBuzzer buzzer)
         {
             myTimer = timer;
             myDisplay = display;
             myPowerTube = powerTube;
+            myBuzzer = buzzer;
 
             timer.Expired += new EventHandler(OnTimerExpired);
             timer.TimerTick += new EventHandler(OnTimerTick);
+             
+            
         }
 
         public void StartCooking(int power, int time)
@@ -58,6 +64,7 @@ namespace Microwave.Classes.Controllers
                 isCooking = false;
                 myPowerTube.TurnOff();
                 UI.CookingIsDone();
+                myBuzzer.MakeSound(3);                
             }
         }
 
@@ -74,5 +81,16 @@ namespace Microwave.Classes.Controllers
         {
             return myPowerTube.MaximumPower;
         }
+        public void AddTime()
+        {
+            myTimer.AddTime();
+
+        }
+        public void SubtractTime()
+        {
+            myTimer.SubtractTime();
+        }
+
+
     }
 }
