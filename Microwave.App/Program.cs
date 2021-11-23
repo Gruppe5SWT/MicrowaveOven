@@ -26,8 +26,11 @@ namespace Microwave.App
             Light light = new Light(output);
 
             Microwave.Classes.Boundary.Timer timer = new Microwave.Classes.Boundary.Timer();
+            Buzzer buzzer = new Buzzer(output);
 
-            CookController cooker = new CookController(timer, display, powerTube);
+            Microwave.Classes.Boundary.Timer timer = new Timer();
+
+            CookController cooker = new CookController(timer, display, powerTube, buzzer);
 
             UserInterface ui = new UserInterface(powerButton, timeButton, startCancelButton, AddTimeButton, subtractTimeButton, door, display, light, cooker);
 
