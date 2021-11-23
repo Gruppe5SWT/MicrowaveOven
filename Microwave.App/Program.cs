@@ -54,7 +54,8 @@ namespace Microwave.App
             // Sequence to demonstrate change of maximum power on powertube
             // ------------- START ---------------
             startCancelButton.Press();
-
+            Console.WriteLine("-------");
+            Console.WriteLine("Feature 2: Changing max power of power tube");
             Console.WriteLine("Sets maxpower to 100. The power will return to 50 if it would otherwise go above maxPower. Observe:");
             powerTube.MaximumPower=100;
             powerButton.Press();
@@ -73,23 +74,29 @@ namespace Microwave.App
 
 
 
-            System.Console.WriteLine("When you press enter, the program will stop");
             // Wait for input
             /*
              *  Demonstrating Feature 3: Add or remove time during cooking
              *  Works in 20 second intervals.             * 
              */
+            
+            timeButton.Press();
+
+            startCancelButton.Press();
             Console.WriteLine("-------");
             Console.WriteLine("Feature 3: Adding and removing time during cooking");
-            Console.WriteLine("Pressing AddtimeButton twice to add 20 seconds");
+            Console.WriteLine("Pressing AddtimeButton twice to add 40 seconds");
             AddTimeButton.Press();
             AddTimeButton.Press();
             Thread.Sleep(3000); //sleep a bit to see the change
-            Console.WriteLine("Pressing SubtractTimeButton once to remove 20 seconds");
+            Console.WriteLine("Pressing SubtractTimeButton 3 times to remove 60 seconds");
+            subtractTimeButton.Press();
+            subtractTimeButton.Press();
             subtractTimeButton.Press();
 
 
-
+            System.Console.WriteLine("When you press enter, the program will stop");
+            
 
             System.Console.ReadLine();
         }

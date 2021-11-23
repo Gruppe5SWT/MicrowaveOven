@@ -21,7 +21,7 @@ namespace Microwave.Classes.Boundary
             {
                 myOutput.OutputLine("The buzzer is making a sound");
                 if (i > 0 && i < times - 1)
-                    Thread.Sleep(100);
+                    Thread.Sleep(500);
             }
         }
 
