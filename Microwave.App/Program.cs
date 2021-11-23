@@ -28,7 +28,6 @@ namespace Microwave.App
             Microwave.Classes.Boundary.Timer timer = new Microwave.Classes.Boundary.Timer();
             Buzzer buzzer = new Buzzer(output);
 
-            Microwave.Classes.Boundary.Timer timer = new Timer();
 
             CookController cooker = new CookController(timer, display, powerTube, buzzer);
 

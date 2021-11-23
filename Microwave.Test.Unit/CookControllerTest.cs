@@ -94,6 +94,8 @@ namespace Microwave.Test.Unit
 
             buzzer.Received().MakeSound(3);
 
+        }
+        [Test]
         public void AddTime_myTimerAddTime()
         {
             uut.AddTime();
@@ -110,4 +112,4 @@ namespace Microwave.Test.Unit
         }
 
     }
-}
+ }
