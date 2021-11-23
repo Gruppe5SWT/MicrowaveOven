@@ -20,7 +20,7 @@ namespace Microwave.Classes.Boundary
             for (int i = 0; i < times; i++)
             {
                 myOutput.OutputLine("The buzzer is making a sound");
-                if (i > 0 && i < times - 1)
+                if (times > 0 && i < times - 1)
                     Thread.Sleep(500);
             }
         }

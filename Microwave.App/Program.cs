@@ -93,6 +93,8 @@ namespace Microwave.App
             subtractTimeButton.Press();
             subtractTimeButton.Press();
             subtractTimeButton.Press();
+            subtractTimeButton.Press();
+
 
 
             System.Console.WriteLine("When you press enter, the program will stop");
