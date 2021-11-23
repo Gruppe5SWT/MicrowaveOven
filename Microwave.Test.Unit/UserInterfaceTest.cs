@@ -23,6 +23,7 @@ namespace Microwave.Test.Unit
         private ILight light;
 
         private ICookController cooker;
+        private int testedMaxPower;
 
         [SetUp]
         public void Setup()
@@ -36,6 +37,8 @@ namespace Microwave.Test.Unit
             light = Substitute.For<ILight>();
             display = Substitute.For<IDisplay>();
             cooker = Substitute.For<ICookController>();
+            testedMaxPower = 700;
+            cooker.GetPowerTubeMaxPower().Returns(testedMaxPower);
 
 
             uut = new UserInterface(
@@ -215,10 +218,35 @@ namespace Microwave.Test.Unit
             cooker.Received(1).StartCooking(100, 120);
         }
 
-        [Test]
-        public void Ready_FullPower_CookerIsCalledCorrectly()
+        [TestCase(100)]
+        [TestCase(200)]
+        [TestCase(300)]
+        [TestCase(400)]
+        [TestCase(500)]
+        [TestCase(600)]
+        [TestCase(700)]
+        [TestCase(800)]
+        [TestCase(900)]
+        [TestCase(1000)]
+        public void Ready_FullPower_CookerIsCalledCorrectly(int testedMaxPower)
         {
-            for (int i = 50; i <= 700; i += 50)
+            powerButton = Substitute.For<IButton>();
+            timeButton = Substitute.For<IButton>();
+            startCancelButton = Substitute.For<IButton>();
+            door = Substitute.For<IDoor>();
+            light = Substitute.For<ILight>();
+            display = Substitute.For<IDisplay>();
+            cooker = Substitute.For<ICookController>();
+            cooker.GetPowerTubeMaxPower().Returns(testedMaxPower);
+
+            uut = new UserInterface(
+                powerButton, timeButton, startCancelButton, addTimeButton, subtractTimeButton,
+                door,
+                display,
+                light,
+                cooker);
+
+            for (int i = 50; i <= testedMaxPower; i += 50)
             {
                 powerButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
             }
@@ -229,7 +257,7 @@ namespace Microwave.Test.Unit
             // Should call with correct values
             startCancelButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
 
-            cooker.Received(1).StartCooking(700, 60);
+            cooker.Received(1).StartCooking(testedMaxPower, 60);
 
         }
 

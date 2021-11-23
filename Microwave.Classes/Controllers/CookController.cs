@@ -77,6 +77,10 @@ namespace Microwave.Classes.Controllers
             }
         }
 
+        public int GetPowerTubeMaxPower()
+        {
+            return myPowerTube.MaximumPower;
+        }
         public void AddTime()
         {
             myTimer.AddTime();
@@ -87,6 +91,6 @@ namespace Microwave.Classes.Controllers
             myTimer.SubtractTime();
         }
 
-        
+
     }
 }
