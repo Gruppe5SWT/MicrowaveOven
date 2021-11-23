@@ -19,7 +19,6 @@ namespace Microwave.Classes.Controllers
 
         private int powerLevel = 50;
         private int time = 1;
-        private int PwrTubeMaxPower;
 
         public UserInterface(
             IButton powerButton,

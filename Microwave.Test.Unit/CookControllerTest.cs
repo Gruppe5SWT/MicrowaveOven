@@ -94,7 +94,9 @@ namespace Microwave.Test.Unit
             powerTube.MaximumPower.Returns(tubePower);
             var res = uut.GetPowerTubeMaxPower();
             Assert.That(res.Equals(tubePower));
-        [Test]
+        }
+        
+            [Test]
         public void Cooking_TimerExpired_BuzzerCalled()
         {
             uut.StartCooking(50, 60);

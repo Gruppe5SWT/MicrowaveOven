@@ -240,7 +240,7 @@ namespace Microwave.Test.Unit
             cooker.GetPowerTubeMaxPower().Returns(testedMaxPower);
 
             uut = new UserInterface(
-                powerButton, timeButton, startCancelButton,
+                powerButton, timeButton, startCancelButton, addTimeButton, subtractTimeButton,
                 door,
                 display,
                 light,
